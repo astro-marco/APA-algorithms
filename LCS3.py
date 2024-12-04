@@ -1,5 +1,4 @@
 # type: ignore
-
 from tkinter.tix import MAX
 
 def LCS3_b(X,Y,W):
@@ -16,28 +15,28 @@ def LCS3_b(X,Y,W):
 			
 	for j in range(1,n):
 		for h in range(0,l):
-				c[0,j,h] = 0
+				c[0][j][h] = 0
 
 	for i in range(1,m):
 		for j in range(1,n):
-			c[i,j,0] = 0
+			c[i][j][0] = 0
 
 	for i in range(1,m):
 		for j in range(1,n):
 			for h in range(1,l):
 				if X[i] == Y[j]:
-					c[i,j,h] = 1 + c[i-1,j-1,h]
-					b[i,j,h] = '↖' # giù diagonale 3D
+					c[i][j][h] = 1 + c[i-1][j-1][h]
+					b[i][j][h] = '↖' # giù diagonale 3D
 				elif Y[j] == W[h]:
-					c[i,j,h] = 1 + c[i,j-1,h-1]
-				elif X[i] == W[h] then
-					c[i,j,h] = 1 + c[i-1,j,h-1]
+					c[i][j][h] = 1 + c[i][j-1][h-1]
+				elif X[i] == W[h]:
+					c[i][j][h] = 1 + c[i-1][j][h-1]
 				else:
-					c[i,j,h] = MAX(c[i-1,j,h],c[i,j-1,h],c[i,j,h-1])
-					if c[i,j,h] == c[i-1,j,h]:
-						b[i,j,h] = '↑'
-					elif c[i,j,h] == c[i,j-1,h]:
-						b[i,j,h] = '←'
-					elif c[i,j,h] == c[i,j,h-1]:
-						b[i,j,h] = '↑' # 
-return c[m,n,h]
+					c[i][j][h] = max(c[i-1][j][h], c[i][j-1][h], c[i][j][h-1])
+					if c[i][j][h] == c[i-1][j][h]:
+						b[i][j][h] = '↑'
+					elif c[i][j][h] == c[i][j-1][h]:
+						b[i][j][h] = '←'
+					elif c[i][j][h] == c[i][j][h-1]:
+						b[i][j][h] = '↑' # 
+return c[m][n][l]
