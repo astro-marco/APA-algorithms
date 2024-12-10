@@ -29,30 +29,31 @@ def LCS3_b(X,Y,W):
 	for i in range(1,m):
 		for j in range(1,n):
 			for h in range(1,l):
-				# le 7 direzioni che "regrediscono" verso b[0][0][0]
-				# quelle possibili sarebbero 26 immaginando un cubo 3x3x3
+				# The 7 directions that 'regress' towards position b[0][0][0].
+				# Total number of directions would be 26, pretending to stand
+				# in the central position of a 3x3x3 cube.
 				if X[i] == Y[j] and Y[j] == W[h]:
 					c[i][j][h] = 1 + c[i-1][j-1][h-1]
-					b[i][j][h] = 2 # giù in diagonale (verso lo spigolo [0,0,0])
+					b[i][j][h] = 5 # down-diagonal (ideally towards [0,0,0])
 				
 				elif X[i] == Y[j]:
 					c[i][j][h] = 1 + c[i-1][j-1][h]
-					b[i][j][h] = 5 # in diagonale orizzontale (verso [0,0,h])
+					b[i][j][h] = 2 # horizontal diagonal (verso [0,0,h])
 				
 				elif Y[j] == W[h]:
-					c[i][j][h] = 1 + c[i][j-1][h-1]
-					b[i][j][h] = 3 # giù a destra
+					c[i][j][h] = 1 + c[i-1][j][h-1]
+					b[i][j][h] = 6 # down-right
 				
 				elif X[i] == W[h]:
-					c[i][j][h] = 1 + c[i-1][j][h-1]
-					b[i][j][h] = 1 # giù a sinistra
+					c[i][j][h] = 1 + c[i][j-1][h-1]
+					b[i][j][h] = 4 # down-left
 
 				else:
-					c[i][j][h] = max(c[i-1][j][h], c[i][j-1][h], c[i][j][h-1])
+					c[i][j][h] = MAX(c[i-1][j][h], c[i][j-1][h], c[i][j][h-1])
 					if c[i][j][h] == c[i-1][j][h]:
-						b[i][j][h] = 4
+						b[i][j][h] = 3 # horizontal right
 					elif c[i][j][h] == c[i][j-1][h]:
-						b[i][j][h] = 6
+						b[i][j][h] = 1 # horizontal left
 					elif c[i][j][h] == c[i][j][h-1]:
-						b[i][j][h] = 7 # 
+						b[i][j][h] = 7 # vertical down
 return c[m][n][l]
