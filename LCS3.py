@@ -11,8 +11,8 @@ def LCS3_b(X,Y,W):
 	n = len(Y)
 	l = len(W)
 	
-    c = [[[0 for h in range(l+1)]for j in range(n+1)]for i in range(m+1)]
-    b = [[[0 for h in range(l+1)]for j in range(n+1)]for i in range(m+1)]
+	c = [[[0 for h in range(l+1)]for j in range(n+1)]for i in range(m+1)]
+	b = [[[0 for h in range(l+1)]for j in range(n+1)]for i in range(m+1)]
 	
 	for i in range(0,m):
 		for h in range(0,l):
@@ -56,4 +56,4 @@ def LCS3_b(X,Y,W):
 						b[i][j][h] = 1 # horizontal left
 					elif c[i][j][h] == c[i][j][h-1]:
 						b[i][j][h] = 7 # vertical down
-return c[m][n][l]
+	return c[m][n][l]
