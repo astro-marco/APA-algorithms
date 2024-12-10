@@ -57,3 +57,5 @@ def LCS3_b(X,Y,W):
 					elif c[i][j][h] == c[i][j][h-1]:
 						b[i][j][h] = 7 # vertical down
 	return c[m][n][l]
+
+main()
