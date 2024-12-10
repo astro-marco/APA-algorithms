@@ -4,7 +4,7 @@ def main():
 	Y = "rilevatore"
 	W = "cavolfiore"
 
-    print("Length of LCS is ", LCS3_b(X, Y, W))
+	print("Length of LCS is ", LCS3_b(X, Y, W))
 
 def LCS3_b(X,Y,W):
 	m = len(X)
