@@ -58,4 +58,4 @@ def LCS3_b(X,Y,W):
 						b[i][j][h] = 7 # vertical down
 	return c[m][n][l]
 
-main()
+main() # per poter eseguire il file
