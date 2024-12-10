@@ -4,7 +4,7 @@ def main():
 	Y = "rilevatore"
 	W = "cavolfiore"
 
-	print("Length of LCS is ", LCS3_b(X, Y, W))
+	print("Length of LCS is", LCS3_b(X,Y,W))
 
 def LCS3_b(X,Y,W):
 	m = len(X)
@@ -15,11 +15,11 @@ def LCS3_b(X,Y,W):
 	b = [[[0 for h in range(l+1)]for j in range(n+1)]for i in range(m+1)]
 	
 	# Fill the base cases
-	for i in range(0,m+1):
-		for h in range(0,l+1):
+	for i in range(m+1):
+		for h in range(l+1):
 			c[i][0][h] = 0
 			
-	for j in range(1,n):
+	for j in range(1,n+1):
 		for h in range(0,l+1):
 			c[0][j][h] = 0
 
@@ -33,19 +33,19 @@ def LCS3_b(X,Y,W):
 				# The 7 directions that 'regress' towards position b[0][0][0].
 				# Total number of directions would be 26, pretending to stand
 				# in the central position of a 3x3x3 cube.
-				if X[i] == Y[j] and Y[j] == W[h]:
+				if X[i-1] == Y[j-1] and Y[j-1] == W[h-1]:
 					c[i][j][h] = 1 + c[i-1][j-1][h-1]
 					b[i][j][h] = 5 # down-diagonal (ideally towards [0,0,0])
 				
-				elif X[i] == Y[j]:
+				elif X[i-1] == Y[j-1]:
 					c[i][j][h] = 1 + c[i-1][j-1][h]
-					b[i][j][h] = 2 # horizontal diagonal (verso [0,0,h])
+					b[i][j][h] = 2 # horizontal diagonal (towards [0,0,h])
 				
-				elif Y[j] == W[h]:
+				elif Y[j-1] == W[h-1]:
 					c[i][j][h] = 1 + c[i-1][j][h-1]
 					b[i][j][h] = 6 # down-right
 				
-				elif X[i] == W[h]:
+				elif X[i-1] == W[h-1]:
 					c[i][j][h] = 1 + c[i][j-1][h-1]
 					b[i][j][h] = 4 # down-left
 
