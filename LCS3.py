@@ -1,10 +1,10 @@
 # type: ignore
-from tkinter.tix import MAX
-
 def main():
 	X = "casella"
 	Y = "rilevatore"
 	W = "cavolfiore"
+
+	print(LCS3_b(X,Y,W))
 
 def LCS3_b(X,Y,W):
 	m = len(X)
@@ -49,7 +49,7 @@ def LCS3_b(X,Y,W):
 					b[i][j][h] = 4 # down-left
 
 				else:
-					c[i][j][h] = MAX(c[i-1][j][h], c[i][j-1][h], c[i][j][h-1])
+					c[i][j][h] = max(c[i-1][j][h], c[i][j-1][h], c[i][j][h-1])
 					if c[i][j][h] == c[i-1][j][h]:
 						b[i][j][h] = 3 # horizontal right
 					elif c[i][j][h] == c[i][j-1][h]:
