@@ -1,8 +1,8 @@
 # type: ignore
 def main():
-	X = "trattore"
-	Y = "rilevatore"
-	W = "cavolfiore"
+	X = "cammello"
+	Y = "casa"
+	W = "padella"
 
 	print("Length of LCS is", LCS3_b(X,Y,W))
 
