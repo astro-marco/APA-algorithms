@@ -1,12 +1,9 @@
 # type: ignore
-def main():
-	X = "cammello"
-	Y = "casa"
-	W = "padella"
 
-	print("Length of LCS is", LCS3_b(X,Y,W))
+b = None
 
 def LCS3_b(X,Y,W):
+	global b
 	m = len(X)
 	n = len(Y)
 	l = len(W)
@@ -59,4 +56,7 @@ def LCS3_b(X,Y,W):
 						b[i][j][h] = 7 # vertical down
 	return c[m][n][l]
 
-main() # per poter eseguire il file
+# to retrieve b from LCS3_b and use it in print_LCS3
+def get_b():
+    global b
+    return b
