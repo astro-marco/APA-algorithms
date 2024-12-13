@@ -1,4 +1,5 @@
 # type: ignore
+import pprint
 
 def LCS3_b(X,Y,W):
 	global b
@@ -29,6 +30,7 @@ def LCS3_b(X,Y,W):
 				# Total number of directions would be 26, pretending to stand
 				# in the central position of a 3x3x3 cube.
 				if X[i-1] == Y[j-1] and Y[j-1] == W[h-1]:
+					print(f"Match found at ({i}, {j}, {h}): {X[i-1]}")  # Debug
 					c[i][j][h] = 1 + c[i-1][j-1][h-1]
 					b[i][j][h] = 5 # down-diagonal (ideally towards [0,0,0])
 				
@@ -61,7 +63,8 @@ def print_LCS3(b,X,Y,W):
     invertedLCS3 = [] # list to store characters to print
 
     # navigating the i x j x h cube (3D matrix)
-    while i != 0 and j != 0 and h != 0:
+    while i > 0 and j > 0 and h > 0:
+        print(f"Position: ({i}, {j}, {h}), b[i][j][h]: {b[i][j][h]}")  # Debug
         if b[i][j][h] == 1: # horizontal left
             j -= 1
         elif b[i][j][h] == 2: # horizontal diagonal
@@ -82,6 +85,9 @@ def print_LCS3(b,X,Y,W):
             h -= 1
         elif b[i][j][h] == 7: # vertical down
             h -= 1
+        else:
+            print("Unexpected value in b:", b[i][j][h])  # Debug
+            break  # Interrompi in caso di valori non previsti
 		
     # Reverse the list to get the correct order of LCS
     LCS3 = ''.join(reversed(invertedLCS3))
@@ -93,6 +99,7 @@ def main():
     W = "padella"
     
     print("Length of LCS is", LCS3_b(X,Y,W))
+    pprint.pprint(b) # Print the matrix `b` for debugging
     print("One of the LCSs is")
     print_LCS3(b,X,Y,W)
 
