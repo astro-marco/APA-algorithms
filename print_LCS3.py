@@ -17,7 +17,7 @@ def print_LCS3(b,X,Y,W):
             j -= 1
             h -= 1
         elif b[i][j][h] == 5: # down-diagonal
-            invertedLCS3.append(X[i])
+            invertedLCS3.append(X[i-1])
             i -= 1
             j -= 1
             h -= 1
