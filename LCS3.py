@@ -92,7 +92,6 @@ def main():
     Y = "casa"
     W = "padella"
     
-    LCS3_b(X, Y, W)
     print("Length of LCS is", LCS3_b(X,Y,W))
     print("One of the LCSs is")
     print_LCS3(b,X,Y,W)
